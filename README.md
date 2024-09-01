@@ -1,10 +1,13 @@
 # GamingConsole
 
 Cloud Gaming Platform Project (CGdupP)
+
 Overview
+
 The Cloud Gaming Platform Project (CGdupP) is an advanced cloud-based infrastructure designed to deliver an optimal gaming experience for Black Myth: Wukong. The project is a testament to the power and flexibility of cloud computing, leveraging Terraform for automated infrastructure deployment on AWS.
 
 Project Scope
+
 This platform is built to handle the complexities of cloud-based gaming, including but not limited to:
 
 High-Performance VPC Configuration: Secure and scalable Virtual Private Cloud (VPC) setup to ensure low-latency gaming.
