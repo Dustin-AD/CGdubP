@@ -1,18 +1,9 @@
-provider "aws" {
-    region = "us-east-1"
-}
-
-
-
 # Create a VPC
-resource "aws_vpc" "GamingConsole_VPC" {
-    cidr_block = "10.0.0.0/16"
+resource "aws_vpc" "cgdubp_vpc" {
+    cidr_block = var.vpc_cidr_block
 
     tags = {
-        Name = "GamingConsole_VPC"
-        Environment = "Dev"
-        Project = "GamingConsole"
-        Owner = "PrimaryAdmin"
+        Name = var.vpc_name
         
     }
 }
@@ -21,47 +12,47 @@ resource "aws_vpc" "GamingConsole_VPC" {
 
 # Public Subnet 1
 resource "aws_subnet" "public_subnet1" {
-    vpc_id = aws_vpc.GamingConsole_VPC.id
-    cidr_block = "10.0.1.0/24"
-    availability_zone = "us-east-1b"
+    vpc_id = aws_vpc.cgdubp_vpc.id
+    cidr_block = var.public_subnet1_cidr
+    availability_zone = var.availability_zone1
 
     tags = {
-        Name = "GamingConsole_Public_Subnet1"
+        Name = "${var.vpc_name}_Public_Subnet1"
     }
 }
 
-# Public Subnet 2 in Development
+# Public Subnet 2
 resource "aws_subnet" "public_subnet2" {
-    vpc_id = aws_vpc.GamingConsole_VPC.id
-    cidr_block = "10.0.2.0/24"
-    availability_zone = "us-east-1a"
+    vpc_id = aws_vpc.cgdubp_vpc.id
+    cidr_block = var.public_subnet2_cidr
+    availability_zone = var.availability_zone2
 
     tags = {
-        Name = "GamingConsole_Public_Subnet2"
+        Name = "${var.vpc_name}_Public_Subnet2"
     }
 }
 
 
 # Private Application Subnet 1
 resource "aws_subnet" "private_app_subnet1" {
-    vpc_id = aws_vpc.GamingConsole_VPC.id
-    cidr_block = "10.0.3.0/24"
-    availability_zone = "us-east-1a"
+    vpc_id = aws_vpc.cgdubp_vpc.id
+    cidr_block = var.private_app_subnet1_cidr
+    availability_zone = var.availability_zone1
 
     tags = {
-        Name = "GamingConsole_Private_Subnet1"
+        Name = "${var.vpc_name}_Private_Subnet1"
     }
 }
 
 
 # Private Application Subnet 2
 resource "aws_subnet" "private_app_subnet2" {
-    vpc_id = aws_vpc.GamingConsole_VPC.id
-    cidr_block = "10.0.4.0/24"
-    availability_zone = "us-east-1b"
+    vpc_id = aws_vpc.cgdubp_vpc.id
+    cidr_block = var.private_app_subnet2_cidr
+    availability_zone = var.availability_zone2
 
     tags = {
-        Name = "GamingConsole_Private_Subnet2"
+        Name = "${var.vpc_name}_Private_Subnet2"
     }
 }
 
@@ -69,12 +60,12 @@ resource "aws_subnet" "private_app_subnet2" {
 
 # Private Database Subnet 1
 resource "aws_subnet" "private_db_subnet1" {
-    vpc_id = aws_vpc.GamingConsole_VPC.id
-    cidr_block = "10.0.5.0/24"
-    availability_zone = "us-east-1a"
+    vpc_id = aws_vpc.cgdubp_vpc.id
+    cidr_block = var.private_db_subnet1_cidr
+    availability_zone = var.availability_zone1
 
     tags = {
-        Name = "GamingConsole_Private_Subnet3"
+        Name = "${var.vpc_name}_Private_Subnet3"
     }
 }
 
@@ -82,12 +73,12 @@ resource "aws_subnet" "private_db_subnet1" {
 
 # Private Database Subnet 2
 resource "aws_subnet" "private_db_subnet2" {
-    vpc_id = aws_vpc.GamingConsole_VPC.id
-    cidr_block = "10.0.6.0/24"
-    availability_zone = "us-east-1b"
+    vpc_id = aws_vpc.cgdubp_vpc.id
+    cidr_block = var.private_db_subnet2_cidr
+    availability_zone = var.availability_zone2
 
     tags = {
-        Name = "GamingConsole_Private_Subnet4"
+        Name = "${var.vpc_name}_Private_Subnet4"
     }
 }
 
@@ -95,10 +86,10 @@ resource "aws_subnet" "private_db_subnet2" {
 
 # Internet Gateway
 resource "aws_internet_gateway" "internet_gateway" {
-    vpc_id = aws_vpc.GamingConsole_VPC.id
+    vpc_id = aws_vpc.cgdubp_vpc.id
 
     tags = {
-        Name = "GamingConsole_Internet_Gateway"
+        Name = "${var.vpc_name}_Internet_Gateway"
     }
 }
 
@@ -106,15 +97,15 @@ resource "aws_internet_gateway" "internet_gateway" {
 
 # Route Table for Public Subnets
 resource "aws_route_table" "public_route_table" {
-    vpc_id = aws_vpc.GamingConsole_VPC.id
+    vpc_id = aws_vpc.cgdubp_vpc.id
 
     route {
-        cidr_block = "0.0.0.0/0"
+        cidr_block = var.public_route_table_cidr
         gateway_id = aws_internet_gateway.internet_gateway.id
     }
 
     tags = {
-        Name = "GamingConsole_Public_Route_Table"
+        Name = "${var.vpc_name}_Public_Route_Table"
     }
 }
 
