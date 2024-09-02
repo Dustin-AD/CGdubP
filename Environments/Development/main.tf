@@ -17,5 +17,5 @@ module "Network" {
   public_route_table_cidr = "0.0.0.0/0"
   availability_zone1     = "us-east-1a"  
   availability_zone2     = "us-east-1b"  
-  vpc_name               = "CGdubP_VPC"
+  vpc_name               = "cgdubp_vpc"
 }
