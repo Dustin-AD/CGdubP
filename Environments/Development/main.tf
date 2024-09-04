@@ -18,4 +18,5 @@ module "Network" {
   availability_zone1     = "us-east-1a"  
   availability_zone2     = "us-east-1b"  
   vpc_name               = "cgdubp_vpc"
+  public_ip              = "192.168.0.8"
 }

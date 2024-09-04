@@ -52,3 +52,9 @@ variable "vpc_name" {
   description = "The name of the VPC"
   type        = string
 }
+
+variable "public_ip" {
+  description = "The public IP that is allowed to access the Bastion Host"
+  type        = string
+}
+
