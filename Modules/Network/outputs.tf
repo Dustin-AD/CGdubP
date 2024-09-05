@@ -3,6 +3,12 @@ output "vpc_id" {
   value       = aws_vpc.cgdubp_vpc.id
 }
 
+output "bastion_sg_id" {
+  description = "The ID of the Bastion Host security group"
+  value       = aws_security_group.bastion_sg.id
+}
+
+
 output "public_subnet1_id" {
   description = "The ID of the first public subnet"
   value       = aws_subnet.public_subnet1.id

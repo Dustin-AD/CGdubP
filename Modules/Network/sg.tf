@@ -8,7 +8,7 @@ resource "aws_security_group" "bastion_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.public_ip}/32"]
+    cidr_blocks = ["${var.local_ip}/32"]
   }
 
   # Outbound rule to allow all traffic

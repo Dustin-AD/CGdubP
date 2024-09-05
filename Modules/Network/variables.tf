@@ -58,3 +58,8 @@ variable "public_ip" {
   type        = string
 }
 
+variable "local_ip" {
+  description = "The local IP address that is allowed to access the Bastion Host"
+  type        = string
+}
+
