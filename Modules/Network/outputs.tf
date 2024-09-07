@@ -3,40 +3,14 @@ output "vpc_id" {
   value       = aws_vpc.cgdubp_vpc.id
 }
 
-output "bastion_sg_id" {
-  description = "The ID of the Bastion Host security group"
-  value       = aws_security_group.bastion_sg.id
-}
-
-
 output "public_subnet1_id" {
   description = "The ID of the first public subnet"
   value       = aws_subnet.public_subnet1.id
 }
 
-output "public_subnet2_id" {
-  description = "The ID of the second public subnet"
-  value       = aws_subnet.public_subnet2.id
-}
-
 output "private_app_subnet1_id" {
   description = "The ID of the first private application subnet"
   value       = aws_subnet.private_app_subnet1.id
-}
-
-output "private_app_subnet2_id" {
-  description = "The ID of the second private application subnet"
-  value       = aws_subnet.private_app_subnet2.id
-}
-
-output "private_db_subnet1_id" {
-  description = "The ID of the first private database subnet"
-  value       = aws_subnet.private_db_subnet1.id
-}
-
-output "private_db_subnet2_id" {
-  description = "The ID of the second private database subnet"
-  value       = aws_subnet.private_db_subnet2.id
 }
 
 output "internet_gateway_id" {
@@ -47,4 +21,8 @@ output "internet_gateway_id" {
 output "public_route_table_id" {
   description = "The ID of the public route table"
   value       = aws_route_table.public_route_table.id
+}
+
+output "app_sg_id" {
+  value = aws_security_group.app_sg.id
 }

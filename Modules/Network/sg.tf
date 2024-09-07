@@ -1,17 +1,15 @@
-resource "aws_security_group" "bastion_sg" {
-  name        = "${var.vpc_name}_Bastion_SG"
-  description = "Security group for Bastion Host"
+resource "aws_security_group" "app_sg" {
+  name        = "${var.vpc_name}_App_SG"
+  description = "Security group for GPU instance"
   vpc_id      = aws_vpc.cgdubp_vpc.id
 
-  # Inbound rule to allow SSH access from your IP or a specific range
   ingress {
-    from_port   = 22
-    to_port     = 22
+    from_port   = 3389
+    to_port     = 3389
     protocol    = "tcp"
-    cidr_blocks = ["${var.local_ip}/32"]
+    cidr_blocks = ["${var.local_ip}/32"]  # For RDP access from your local machine
   }
 
-  # Outbound rule to allow all traffic
   egress {
     from_port   = 0
     to_port     = 0
@@ -20,6 +18,7 @@ resource "aws_security_group" "bastion_sg" {
   }
 
   tags = {
-    Name = "${var.vpc_name}_Bastion_SG"
+    Name = "${var.vpc_name}_App_SG"
   }
 }
+

@@ -4,11 +4,11 @@ variable "vpc_name" {
 }
 
 variable "public_ip" {
-  description = "The public IP of the jump box"
+  description = "The public IP of the GPU instance"
   type        = string
 }
 
 variable "local_ip" {
-  description = "The local IP address that is allowed to access the Bastion Host"
+  description = "The local IP address that is allowed to access the GPU instance"
   type        = string
 }
