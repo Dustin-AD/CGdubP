@@ -26,7 +26,7 @@ data "aws_ami" "windows" {
 
   filter {
     name   = "name"
-    values = ["Windows_Server-2019-English-Full-Base-*"]  # You can change the version here if needed
+    values = ["Windows_Server-2019-English-Full-Base-*"]  # You can change the vedrsion here if needed
   }
 
   filter {
@@ -41,7 +41,6 @@ resource "aws_instance" "gpu_instance" {
   instance_type               = "g4dn.xlarge"
   subnet_id                   = module.Network.private_app_subnet1_id
   key_name                    = "bastion"
-  associate_public_ip_address = false 
 
   security_groups             = [module.Network.app_sg_id] 
 
