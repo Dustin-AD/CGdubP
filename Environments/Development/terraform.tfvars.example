@@ -1,0 +1,14 @@
+# VPC Name
+vpc_name = "your_vpc_name"
+
+# Local machine's public IP address for restricting access (e.g., "123.123.123.123")
+local_ip = "your_local_ip"
+
+# The name of your existing SSH key pair in AWS
+key_name = "your_ssh_key"
+
+# Database Username
+db_username = "your_db_username"
+
+# Database Password
+db_password = "your_db_password"
