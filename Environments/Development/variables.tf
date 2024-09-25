@@ -3,12 +3,12 @@ variable "vpc_name" {
   type        = string
 }
 
-variable "public_ip" {
-  description = "The public IP of the GPU instance"
+variable "local_ip" {
+  description = "The local IP address that is allowed to access the GPU instance"
   type        = string
 }
 
-variable "local_ip" {
-  description = "The local IP address that is allowed to access the GPU instance"
+variable "key_name" {
+  description = "The name of the key pair to use for instances"
   type        = string
 }

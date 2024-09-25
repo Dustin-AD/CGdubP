@@ -28,13 +28,19 @@ variable "vpc_name" {
   type        = string
 }
 
-variable "public_ip" {
-  description = "The public IP that is allowed to access the Bastion Host"
-  type        = string
-}
-
 variable "local_ip" {
   description = "The local IP address that is allowed to access the Bastion Host"
   type        = string
 }
+
+variable "private_app_subnet2_cidr" {
+  description = "CIDR block for the second private subnet"
+  type        = string
+}
+
+variable "availability_zone2" {
+  description = "Second Availability Zone"
+  type        = string
+}
+
 
